@@ -1,0 +1,10 @@
+
+ChessCrow - Postgresql chess database for storing and analyzing chess games.
+============================================================================
+
+* Uses ChessGrackle Custom types to efficiently store and examine games.
+
+* Features function api to ease integration with clients.
+
+* Keeps logic inside the database.
+	Positions can validated, moves generated, attacked pieces enumerated, .etc ...
