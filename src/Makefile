@@ -1,7 +1,10 @@
 
 DB = chess
+LIB_DIR = `pwd`/../../build/lib
 
-PSQL = psql $(DB) -f $< > /dev/null && touch $@
+PSQL = psql $(DB) -f $< --set pgchess_dir=\'$(LIB_DIR)\' > /dev/null && touch $@
+
+PSQL_DATA = psql $(DB) -f $< --set pgchess_dir=\'$(LIB_DIR)\'
 
 all: .runsql
 
@@ -13,12 +16,13 @@ all: .runsql
 .%.sql : %.sql
 	$(PSQL)
 
-data: data.sql
-	$(PSQL)
+
+
+data: dump.sql
+	$(PSQL_DATA)
 
 eco: dump_eco.sql
-	$(PSQL)
-
+	$(PSQL_DATA)
 
 clean:
 	rm -f .*.sql .runsql

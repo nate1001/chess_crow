@@ -4,9 +4,12 @@
 set client_min_messages=WARNING;
 
 set DYNAMIC_LIBRARY_PATH to
-    '$libdir'
-	    ':/home/muskrat/src/chess/trunk/src/build/lib'
-		; load 'libpgchess';
+    '$libdir:'
+	:pgchess_dir
+	;
+load 'libpgchess';
+
+
 
 create temp table tmp_game(
 	id			integer
