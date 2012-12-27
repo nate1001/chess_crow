@@ -1,6 +1,7 @@
 /* Copyright Nate Carson 2012 */
 
 \set ON_ERROR_STOP
+SET client_min_messages=WARNING;
 
 --------------------------------------
 --	views  ---------------------------

@@ -19,9 +19,8 @@ A FEN record contains six fields. The separator between fields is a space. The f
 http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
 */
 
-
 \set ON_ERROR_STOP
-
+set client_min_messages=WARNING;
 
 --------------------------------------
 --	tables  --------------------------

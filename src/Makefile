@@ -1,21 +1,27 @@
 
-DB = 'chess'
-PSQL = psql $(DB)
+DB = chess
 
-all: tables api
+PSQL = psql $(DB) -f $< > /dev/null && touch $@
 
-tables:
-	$(PSQL) -f $@.sql
+all: .runsql
 
-api: tables
-	$(PSQL) -f $@.sql
+.runsql: .tables.sql .api.sql
+	touch .runsql
+
+.api.sql: .tables.sql
+
+.%.sql : %.sql
+	$(PSQL)
+
+data: data.sql
+	$(PSQL)
+
+eco: dump_eco.sql
+	$(PSQL)
 
 
-data:
-	$(PSQL) -f dump.sql 
-
-eco:
-	$(PSQL) -f dump_eco.sql 
+clean:
+	rm -f .*.sql .runsql
 
 
 	
